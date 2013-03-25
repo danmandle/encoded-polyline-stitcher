@@ -40,7 +40,7 @@
 
 require_once(dirname(__FILE__).'/class.polylineEncoder.php');
 
-class EncodedPolylineStitcher extends PolylineEncoder{
+class PolylineUtilities extends PolylineEncoder{
 	
 	public function stitchPolylines($existingPolyline, $newPolyline, $lastCoords = NULL, $newPolylineFromOrigin = FALSE){
 		// existingPolyline: string
@@ -68,6 +68,9 @@ class EncodedPolylineStitcher extends PolylineEncoder{
 				if(!is_array($lastCoords)){
 					$lastCoords[0] = explode(',', lastCoords);
 				}
+				else{
+					$lastCoords[0] = $lastCoords;	
+				}
 			}
 			else{
 				$lastCoords[0] = array_pop(decodePolyline($existingPolyline));
@@ -85,7 +88,7 @@ class EncodedPolylineStitcher extends PolylineEncoder{
 		return $stitchedPolyline;
 	}
 
-	public function decodePolyline($polyline){
+	public function decode($polyline){
 		require_once(dirname(__FILE__).'/decodePolylineToArray.php');
 		return decodePolylineToArray($polyline);
 	}
