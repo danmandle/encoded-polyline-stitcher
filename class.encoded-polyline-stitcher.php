@@ -53,6 +53,9 @@ class EncodedPolylineStitcher extends PolylineEncoder{
 				if(!is_array($lastCoords)){
 					$lastCoords[0] = explode(',', lastCoords);
 				}
+				else{
+					$lastCoords[0] = $lastCoords;	
+				}
 			}
 			else{
 				$lastCoords[0] = array_pop(decodePolyline($existingPolyline));
